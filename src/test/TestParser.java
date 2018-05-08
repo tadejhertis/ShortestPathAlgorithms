@@ -1,5 +1,6 @@
 package test;
 
+import java.util.Date;
 import java.util.List;
 
 import impl.BellmanFord;
@@ -27,15 +28,26 @@ public class TestParser {
 	
 		for(Edge edge : edges)
 		{
-			graph.addEdge(edge.getSrc(), edge.getDest(), edge.getWeight());
+			graph.addEdge(edge.getSource(), edge.getDestination(), edge.getWeight());
 		}
 		
+		long elapsedTime = 0;
+		
 		System.out.println("Bellman-Ford algoritem:");
+		Date startDate = new Date();
         new BellmanFord().calculateShortestPathFromSource(graph, nodes.get(0));
+		Date endDate = new Date();
+		
+	    elapsedTime = endDate.getTime() - startDate.getTime();
+	    System.out.println("Elapsed time: " + elapsedTime );
 		
         System.out.println("Dijkstra algoritem:");
+		startDate = new Date();
 		new Dijkstra().calculateShortestPathFromSource(graph, nodes.get(0));
-
+		endDate = new Date();
+		
+	    elapsedTime = endDate.getTime() - startDate.getTime();
+	    System.out.println("Elapsed time: " + elapsedTime );
 	}
 
 }

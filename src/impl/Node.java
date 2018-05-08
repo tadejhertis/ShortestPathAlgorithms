@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	
 	private int id;
 	private String name;  
@@ -24,6 +24,9 @@ public class Node {
         this.id = id;
         this.name = name;
     }
+	
+	// ...
+	// Getters and Setters
 	
 	public int getId() 
 	{
@@ -68,6 +71,13 @@ public class Node {
 	public Map<Node, Float> getAdjacentNodes() 
 	{
 		return adjacentNodes;
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		Node other = (Node) o;
+		return Float.compare(this.distance, other.distance);
+
 	}
 
 }

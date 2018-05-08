@@ -1,7 +1,6 @@
 package test;
 
 import impl.Dijkstra;
-import impl.Edge;
 import impl.Graph;
 import impl.Node;
 

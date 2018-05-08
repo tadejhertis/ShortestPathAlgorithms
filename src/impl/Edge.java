@@ -1,48 +1,42 @@
 package impl;
 
-public class Edge implements Comparable<Object> 
+public class Edge implements Comparable<Edge> 
 {
 	
-	private Node src;
-//	private int srcId;
-	private Node dest;
-//	private int destId;
+	private Node source;
+	private Node destination;
 	private float weight;
     
-	public Edge(Node src, Node dest, float weight) 
+	public Edge(Node source, Node destination, float weight) 
 	{
-        this.src = src;
-        this.dest = dest;
+        this.source = source;
+        this.destination = destination;
         this.weight = weight;
     }
 	
-//	public Edge(int srcId, int destId, float weight) 
-//	{
-//        this.srcId = srcId;
-//        this.destId = destId;
-//        this.weight = weight;
-//    }
+	// ...
+	// Getters and Setters
 
-	public Node getSrc() 
+	public Node getSource() 
 	{
-		return src;
+		return source;
 	}
 
-	public void setSrc(Node src) 
+	public void setSource(Node source) 
 	{
-		this.src = src;
+		this.source = source;
 	}
 
-	public Node getDest() 
+	public Node getDestination() 
 	{
-		return dest;
+		return destination;
 	}
 
-	public void setDest(Node dest) 
+	public void setDestination(Node destination) 
 	{
-		this.dest = dest;
+		this.destination = destination;
 	}
-
+	
 	public float getWeight() 
 	{
 		return weight;
@@ -54,10 +48,10 @@ public class Edge implements Comparable<Object>
 	}
 
 	@Override
-	public int compareTo(Object o) 
+	public int compareTo(Edge o) 
 	{
 		Edge other = (Edge) o;
-		return Double.compare(this.weight, other.weight);
+		return Float.compare(this.weight, other.weight);
 	}
 
 }

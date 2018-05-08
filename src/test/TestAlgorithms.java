@@ -1,8 +1,11 @@
 package test;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import impl.Algorithm;
 import impl.BellmanFord;
 import impl.Dijkstra;
 import impl.Graph;
@@ -18,6 +21,7 @@ public class TestAlgorithms
 	Node nodeF = null;
 	Integer nodesCount = null;
 	 
+	Algorithm algorithm = null;
 	Graph graph = null;
 	
 	@Before
@@ -57,15 +61,31 @@ public class TestAlgorithms
 	public void testBellmanFord()
 	{
 		System.out.println("Bellman-Ford algoritem:");
+		
+		long elapsedTime = 0;
+		
         //node A is source
-        new BellmanFord().calculateShortestPathFromSource(graph, nodeA);
+		Date startDate = new Date();
+        algorithm = new BellmanFord();
+        algorithm.calculateShortestPathFromSource(graph, nodeA);
+        Date endDate = new Date();
+        elapsedTime = endDate.getTime() - startDate.getTime();
+        System.out.println("Elapsed time: " + elapsedTime );
 	}
 	
 	@Test
 	public void testDijkstra()
 	{
 		System.out.println("Dijkstra algoritem:");
+		
+		long elapsedTime = 0;
+		
+		 //node A is source
+		Date startDate = new Date();
 		new Dijkstra().calculateShortestPathFromSource(graph, nodeA);
+		Date endDate = new Date();
+        elapsedTime = endDate.getTime() - startDate.getTime();
+        System.out.println("Elapsed time: " + elapsedTime );
 	}
 
 }

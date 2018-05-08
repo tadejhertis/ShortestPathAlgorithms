@@ -1,11 +1,10 @@
 package impl;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class Dijkstra {
+public class Dijkstra extends Algorithm {
 	
 	public void calculateShortestPathFromSource(Graph graph, Node source) 
 	{
@@ -17,7 +16,7 @@ public class Dijkstra {
 	 
 	    unsettledNodes.add(source);
 	 
-	    while (unsettledNodes.size() != 0) 
+	    while (!unsettledNodes.isEmpty()) 
 	    {
 	        Node currentNode = getLowestDistanceNode(unsettledNodes);
 	        unsettledNodes.remove(currentNode);
@@ -36,7 +35,9 @@ public class Dijkstra {
 	    printResult(graph, source);
 	}
 	
-	private Node getLowestDistanceNode(Set < Node > unsettledNodes) 
+	//...
+	
+	private Node getLowestDistanceNode(Set<Node> unsettledNodes) 
 	{
 	    Node lowestDistanceNode = null;
 	    float lowestDistance = Float.MAX_VALUE;
@@ -48,33 +49,6 @@ public class Dijkstra {
 	        }
 	    }
 	    return lowestDistanceNode;
-	}
-	
-	private void calculateMinimumDistance(Node evaluationNode, Float edgeWeigh, Node sourceNode) 
-	{
-			    Float sourceDistance = sourceNode.getDistance();
-			    if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) 
-			    {
-			        evaluationNode.setDistance(sourceDistance + edgeWeigh);
-			        LinkedList<Node> shortestPath = new LinkedList<>(sourceNode.getShortestPath());
-			        shortestPath.add(sourceNode);
-			        evaluationNode.setShortestPath(shortestPath);
-			    }
-	}
-	
-	private void printResult(Graph graph, Node source)
-	{
-		for(Node node : graph.getNodes())
-		{
-			if(node.getName().equals(source.getName()))
-			{
-				continue;
-			}
-			System.out.print(source.getName() + " -> " + node.getName() + ": ");
-			float distance = node.getDistance();
-			String formatedDist = (long) distance == distance ? "" + (long) distance : "" + distance; 
-			System.out.println(formatedDist);
-		}
 	}
 
 }
