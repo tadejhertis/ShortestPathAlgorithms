@@ -1,17 +1,13 @@
 package impl;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 public class Node implements Comparable<Node> {
 	
 	private int id;
 	private String name;  
-    private List<Node> shortestPath = new LinkedList<>();    
-    private Float distance = Float.MAX_VALUE;
-     
+    private Float distance = Float.MAX_VALUE;     
     Map<Node, Float> adjacentNodes = new HashMap<>();
  
     public void addDestination(Node destination, float distance) 
@@ -48,16 +44,6 @@ public class Node implements Comparable<Node> {
 		this.name = name;
 	}
 
-	public List<Node> getShortestPath() 
-	{
-		return shortestPath;
-	}
-
-	public void setShortestPath(List<Node> shortestPath) 
-	{
-		this.shortestPath = shortestPath;
-	}
-
 	public Float getDistance() 
 	{
 		return distance;
@@ -74,7 +60,8 @@ public class Node implements Comparable<Node> {
 	}
 
 	@Override
-	public int compareTo(Node o) {
+	public int compareTo(Node o) 
+	{
 		Node other = (Node) o;
 		return Float.compare(this.distance, other.distance);
 

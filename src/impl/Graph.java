@@ -25,6 +25,18 @@ public class Graph {
     	source.addDestination(destination, weight);
     }
     
+	public void addNode(Node nodeA) 
+	{
+        nodes.add(nodeA);
+    }
+    
+    public PriorityQueue<Edge> getEdgesOfNode(int node)
+    {
+    	return edges[node];
+    }
+    
+    // ...
+    
     public Node getNodeById(int id)
     {
     	for(Node node : nodes)
@@ -36,21 +48,14 @@ public class Graph {
     	}
     	return null;
     }
-    
-    public PriorityQueue<Edge> getEdgesOfNode(int node)
-    {
-    	return edges[node];
-    }
 
-	public PriorityQueue<Edge>[] getEdges() {
+	public PriorityQueue<Edge>[] getEdges() 
+	{
 		return edges;
 	}
-	
-	public void addNode(Node nodeA) {
-        nodes.add(nodeA);
-    }
 
-	public List<Node> getNodes() {
+	public List<Node> getNodes() 
+	{
 		return nodes;
 	}
 

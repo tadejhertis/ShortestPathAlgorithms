@@ -11,11 +11,11 @@ public class BellmanFord extends Algorithm
 		source.setDistance(0f);
 
 		List<Node> nodes = graph.getNodes();
-		for(Node first : nodes)
+		for(int i = 1; i < nodes.size() - 1; i++)
         {
-			for(Node second : nodes)
+			for(Node node : nodes)
 		    {
-				Iterator<Edge> it = graph.getEdgesOfNode(second.getId()).iterator();
+				Iterator<Edge> it = graph.getEdgesOfNode(node.getId()).iterator();
 				while(it.hasNext())
 				{
 					Edge e = it.next();
@@ -28,7 +28,7 @@ public class BellmanFord extends Algorithm
         // step guarantees shortest distances if graph doesn't
         // contain negative weight cycle. If we get a shorter
         //  path, then there is a cycle.
-        boolean hasNegativeWeightCycle = hasNegativeWeightCycle(graph);
+        boolean hasNegativeWeightCycle = checkNegativeWeightCycle(graph);
         
         if(!hasNegativeWeightCycle)
         {
@@ -36,10 +36,9 @@ public class BellmanFord extends Algorithm
         }
     }
 
-	private boolean hasNegativeWeightCycle(Graph graph) 
+	private boolean checkNegativeWeightCycle(Graph graph) 
 	{
-		List<Node> nodes = graph.getNodes();
-		for(Node node : nodes)
+		for(Node node : graph.getNodes())
         {
         	Iterator<Edge> it = graph.getEdgesOfNode(node.getId()).iterator();
         	while(it.hasNext())
@@ -47,8 +46,7 @@ public class BellmanFord extends Algorithm
         		Edge e = it.next();
         		Node source = e.getSource();
         		Node destination = e.getDestination();
-        		float weight = e.getWeight();
-            	if (source.getDistance() + weight < destination.getDistance())
+            	if (source.getDistance() + e.getWeight() < destination.getDistance())
         		{
                     System.out.println("Graph contains negative-weight cycle!");
                     return true;

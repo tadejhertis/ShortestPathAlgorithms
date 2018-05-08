@@ -10,12 +10,12 @@ public abstract class Algorithm
 	
 	protected void calculateMinimumDistance(Node destinationNode, Float edgeWeight, Node sourceNode) 
 	{
-			    Float sourceDistance = sourceNode.getDistance();
-			    Float pathWeight = sourceDistance + edgeWeight;
-			    if (pathWeight < destinationNode.getDistance()) 
-			    {
-			    	destinationNode.setDistance(pathWeight);
-			    }
+		Float sourceDistance = sourceNode.getDistance();
+		Float pathWeight = sourceDistance + edgeWeight;
+		if (pathWeight < destinationNode.getDistance()) 
+		{
+			destinationNode.setDistance(pathWeight);
+		}
 	}
 	
 	protected void printResult(Graph graph, Node source)
