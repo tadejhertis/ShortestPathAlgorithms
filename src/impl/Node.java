@@ -3,11 +3,12 @@ package impl;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Node implements Comparable<Node> {
+public class Node implements Comparable<Node> 
+{
 	
 	private int id;
 	private String name;  
-    private Float distance = Float.MAX_VALUE;     
+    private Float shortestPath = Float.MAX_VALUE;     
     Map<Node, Float> adjacentNodes = new HashMap<>();
  
     public void addDestination(Node destination, float distance) 
@@ -21,7 +22,6 @@ public class Node implements Comparable<Node> {
         this.name = name;
     }
 	
-	// ...
 	// Getters and Setters
 	
 	public int getId() 
@@ -44,14 +44,12 @@ public class Node implements Comparable<Node> {
 		this.name = name;
 	}
 
-	public Float getDistance() 
-	{
-		return distance;
+	public Float getShortestPath() {
+		return shortestPath;
 	}
 
-	public void setDistance(Float distance) 
-	{
-		this.distance = distance;
+	public void setShortestPath(Float shortestPath) {
+		this.shortestPath = shortestPath;
 	}
 
 	public Map<Node, Float> getAdjacentNodes() 
@@ -63,7 +61,7 @@ public class Node implements Comparable<Node> {
 	public int compareTo(Node o) 
 	{
 		Node other = (Node) o;
-		return Float.compare(this.distance, other.distance);
+		return Float.compare(this.shortestPath, other.shortestPath);
 
 	}
 

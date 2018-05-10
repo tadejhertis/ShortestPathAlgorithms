@@ -65,7 +65,7 @@ public class CSVParser {
                 String destinationString = lines[1].substring(1, lines[1].length());
                 int destinationId = Integer.parseInt(destinationString);
                 Node destinationNode = graph.getNodeById(destinationId);
-                int weight = Integer.parseInt(lines[7]);
+                int weight = Integer.parseInt(lines[6]);
                 Edge edge = new Edge(sourceNode, destinationNode, weight);
                 edges.add(edge);
                 edgesCount++;

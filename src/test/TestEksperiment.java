@@ -3,6 +3,8 @@ package test;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Test;
+
 import impl.BellmanFord;
 import impl.CSVParser;
 import impl.Dijkstra;
@@ -10,13 +12,15 @@ import impl.Edge;
 import impl.Graph;
 import impl.Node;
 
-public class TestParser {
-
-	public static void main(String[] args) {
-		
+public class TestEksperiment 
+{
+	
+	@Test
+	public void testRunExperiment()
+	{
 		CSVParser parser = new CSVParser();
 		
-		List<Node> nodes = parser.parseNodesFile("./src/resources/testNodes.csv");
+		List<Node> nodes = parser.parseNodesFile("./src/resources/ekspNodes.csv");
 		
 		Graph graph = new Graph(nodes.size());
 		for(Node node : nodes)
@@ -24,7 +28,7 @@ public class TestParser {
 			graph.addNode(node);
 		}
 		
-		List<Edge> edges = parser.parseEdgesFile("./src/resources/testEdges.csv", graph);
+		List<Edge> edges = parser.parseEdgesFile("./src/resources/ekspEdges.csv", graph);
 	
 		for(Edge edge : edges)
 		{

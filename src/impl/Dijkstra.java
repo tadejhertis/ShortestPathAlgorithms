@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class Dijkstra extends Algorithm {
+public class Dijkstra extends Algorithm 
+{
 	
 	public void calculateShortestPathFromSource(Graph graph, Node source) 
-	{
-	    
-		source.setDistance(0f);
+	{	    
+		source.setShortestPath(0f);
 	 
 	    Set<Node> settledNodes = new HashSet<>();
 	    Set<Node> unsettledNodes = new HashSet<>();
@@ -42,7 +42,7 @@ public class Dijkstra extends Algorithm {
 	    Node lowestDistanceNode = null;
 	    float lowestDistance = Float.MAX_VALUE;
 	    for (Node node : unsettledNodes) {
-	        float nodeDistance = node.getDistance();
+	        float nodeDistance = node.getShortestPath();
 	        if (nodeDistance < lowestDistance) {
 	            lowestDistance = nodeDistance;
 	            lowestDistanceNode = node;
@@ -50,5 +50,7 @@ public class Dijkstra extends Algorithm {
 	    }
 	    return lowestDistanceNode;
 	}
+	
+	// ...
 
 }

@@ -10,13 +10,15 @@ public abstract class Algorithm
 	
 	protected void calculateMinimumDistance(Node destinationNode, Float edgeWeight, Node sourceNode) 
 	{
-		Float sourceDistance = sourceNode.getDistance();
+		Float sourceDistance = sourceNode.getShortestPath();
 		Float pathWeight = sourceDistance + edgeWeight;
-		if (pathWeight < destinationNode.getDistance()) 
+		if (pathWeight < destinationNode.getShortestPath()) 
 		{
-			destinationNode.setDistance(pathWeight);
+			destinationNode.setShortestPath(pathWeight);
 		}
 	}
+	
+	// ...
 	
 	protected void printResult(Graph graph, Node source)
 	{
@@ -29,7 +31,7 @@ public abstract class Algorithm
 				continue;
 			}
 			System.out.print(source.getName() + " -> " + node.getName() + ": ");
-			float distance = node.getDistance();
+			float distance = node.getShortestPath();
 			String formatedDist = (long) distance == distance ? "" + (long) distance : "" + distance; 
 			System.out.println(formatedDist);
 		}
