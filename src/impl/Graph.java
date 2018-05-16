@@ -48,6 +48,18 @@ public class Graph {
     	}
     	return null;
     }
+    
+    public Node getNodeByLabel(String label)
+    {
+    	for(Node node : nodes)
+    	{
+    		if(node.getName().equals(label))
+    		{
+    			return node;
+    		}
+    	}
+    	return null;
+    }
 
 	public PriorityQueue<Edge>[] getEdges() 
 	{
