@@ -30,6 +30,10 @@ public abstract class Algorithm
 			{
 				continue;
 			}
+//			if(node.getShortestPath() == Float.MAX_VALUE)
+//			{
+//				continue;
+//			}
 			System.out.print(source.getName() + " -> " + node.getName() + ": ");
 			float distance = node.getShortestPath();
 			String formatedDist = (long) distance == distance ? "" + (long) distance : "" + distance; 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import impl.Algorithm;
 import impl.BellmanFord;
 import impl.CSVParser;
 import impl.Dijkstra;
@@ -40,17 +41,23 @@ public class TestSimulation {
 		
 		System.out.println("Bellman-Ford algoritem:");
 		Date startDate = new Date();
-        new BellmanFord().calculateShortestPathFromSource(graph, nodes.get(0));
-		Date endDate = new Date();
-		
+		Algorithm bellmanFord = new BellmanFord();
+		for(Node node : nodes)
+		{
+			bellmanFord.calculateShortestPathFromSource(graph, node);
+		}
+		Date endDate = new Date();		
 	    elapsedTime = endDate.getTime() - startDate.getTime();
 	    System.out.println("Bellman-Ford elapsed time: " + elapsedTime );
 		
         System.out.println("Dijkstra algoritem:");
 		startDate = new Date();
-		new Dijkstra().calculateShortestPathFromSource(graph, nodes.get(0));
-		endDate = new Date();
-		
+		Algorithm dijkstra = new Dijkstra();
+		for(Node node : nodes)
+		{
+			dijkstra.calculateShortestPathFromSource(graph, node);
+		}
+		endDate = new Date();		
 	    elapsedTime = endDate.getTime() - startDate.getTime();
 	    System.out.println("Dijkstra elapsed time: " + elapsedTime );
 	    
